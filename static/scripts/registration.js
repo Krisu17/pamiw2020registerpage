@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     const GET = "GET";
     const POST = "POST";
-    const URL = "https://pamiw2020registration.herokuapp.com/user/LOGIN";
+    const URL = "https://pamiw2020registration.herokuapp.com/";
 
     const LOGIN_FIELD_ID = "login";
 
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     function checkLoginAvailability() {
         let loginInput = document.getElementById(LOGIN_FIELD_ID);
-        let baseUrl = URL + "user/";
+        let baseUrl = URL + "user/LOGIN/";
         let userUrl = baseUrl + loginInput.value;
 
         return Promise.resolve(fetch(userUrl, {method: GET}).then(function (resp) {
