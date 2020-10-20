@@ -81,10 +81,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
     function isLoginAvailable() {
         return Promise.resolve(checkLoginAvailability().then(function (statusCode) {
             if (statusCode === HTTP_STATUS.OK) {
-                return false;
+                return true;
 
             } else if (statusCode === HTTP_STATUS.NOT_FOUND) {
-                return true
+                return false;
 
             } else {
                 throw "Unknown login availability status: " + statusCode;
