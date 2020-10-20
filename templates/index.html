@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pl">
     <head>
-		<title>Nobliści</title>
+		<title>Registration form</title>
 		<meta charset="utf-8">
 		<link href="styles/style.css" rel="stylesheet" type="text/css">
-		<script src="scripts/script.js"></script>
+		<script src="scripts/registration.js"></script>
     </head>
     <body>
         <header>
-            <h2>zażółć gęślą jaźń</h2>
+            <h2>Załóż darmowe konto</h2>
         </header>
         <nav>
 			 <ul>
@@ -23,28 +23,12 @@
 
 			<form id="registration-form" class="registration-form">
 
-				<label for="firstname" class="required">Imię</label>
-				<input id="firstname" type="text" name="firstname"/>
-				<br/>
-
-				<label for="surname" class="required">Nazwisko</label>
-				<input id="surname" type="text" name="surname"/>
-				<br/>
-
-				<label for="birthdate" class="required">Data urodzenia</label>
-				<input id="birthdate" type="text" name="birthdate" placeholder="YYYY-MM-DD"/>
+				<label for="login" class="required">Login</label>
+				<input id="login" type="text" name="login"/>
 				<br/>
 
 				<label for="pesel" class="required">PESEL</label>
 				<input id="pesel" type="text" name="pesel"/>
-				<br/>
-
-				<label for="sex" class="required">Płeć</label>
-				<input id="sex" type="text" name="sex"/>
-				<br/>
-
-				<label for="login" class="required">Login</label>
-				<input id="login" type="text" name="login"/>
 				<br/>
 
 				<label for="password" class="required">Hasło</label>
@@ -55,9 +39,6 @@
 				<input id="repeat-password" type="password" name="repeat-password"/>
 				<br/>
 
-				<label for="avatar" class="required">Avatar</label>
-				<input id="avatar" type="file" name="avatar">
-				<br/>
 
 				<input id="button-reg-form" type="submit" value="Rejestruj"/>
 
