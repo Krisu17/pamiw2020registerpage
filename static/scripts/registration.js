@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     function checkLoginAvailability() {
         let loginInput = document.getElementById(LOGIN_FIELD_ID);
-        let baseUrl = URL + "user/LOGIN/";
+        let baseUrl = URL + "user/";
         let userUrl = baseUrl + loginInput.value;
 
         return Promise.resolve(fetch(userUrl, {method: GET}).then(function (resp) {
