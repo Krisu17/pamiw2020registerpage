@@ -106,3 +106,10 @@ footer {
 .footer-img {
     vertical-align: middle;
 }
+
+.warning-field {
+    display: inline-block;
+    width: 150px;
+    color: red;
+    font-size: small;
+}

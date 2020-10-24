@@ -30,14 +30,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     function updateLoginAvailabilityMessage() {
         let warningElemId = "loginWarning";
-        let warningMessage = "Ten login jest już zajęty";
+        let warningMessage = "Ten login jest już zajęty.";
 
         isLoginAvailable().then(function (isAvailable) {
             if (isAvailable) {
-                console.log("Available login!");
+                console.log("Available login!"); // to remove
                 removeLoginWarningMessage(warningElemId);
             } else {
-                console.log("NOT available login");
+                console.log("NOT available login"); // to remove
                 showLoginWarningMessage(warningElemId, warningMessage);
             }
         }).catch(function (error) {
