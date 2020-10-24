@@ -1,54 +1,109 @@
 <!DOCTYPE html>
 <html lang="pl">
-    <head>
-		<title>Registration form</title>
-		<meta charset="utf-8">
-		<link href="styles/style.css" rel="stylesheet" type="text/css">
-		<script src="scripts/registration.js"></script>
-    </head>
-    <body>
-        <header>
-            <h2>Załóż darmowe konto</h2>
-        </header>
-        <nav>
-			 <ul>
-				<li><a href="#">Infoss</a></li>
-				<li><a href="#">Znajdź noblistę</a></li>
-				<li><a href="#">Kontakt</a></li>
-			</ul>
-		</nav>
-		<section>
+<head>
+	<title>Nobliści</title>
+	<meta charset="utf-8">
+	<link href="styles/style.css" rel="stylesheet" type="text/css">
+	<script src="scripts/script.js"></script>
+</head>
+<body>
+<header>
+	<h2>zażółć gęślą jaźń</h2>
+</header>
+<nav>
+	<ul>
+		<li><a href="#">Info</a></li>
+		<li><a href="#">Znajdź noblistę</a></li>
+		<li><a href="#">Kontakt</a></li>
+	</ul>
+</nav>
+<section>
+	<h3>Pierwszy najważniejszy artykuł</h3>
+	<p>Aenean quis est ultrices, tincidunt massa rhoncus, convallis ex. Sed consequat euismod metus, in efficitur arcu vulputate eget. Nullam auctor ornare quam, id mollis neque hendrerit et. Phasellus mollis arcu vitae quam varius, non pharetra dui varius. Sed tincidunt, leo eu fringilla dictum, libero lorem ultricies ante, eget mollis ligula ex sit amet mi. Nam augue diam, dapibus vitae justo auctor, cursus vulputate tellus. Aenean gravida felis nibh, et porttitor augue pretium vel. Proin maximus varius nisi, vitae suscipit neque condimentum id. Vestibulum vehicula blandit nulla, et efficitur elit fringilla a. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris non sem metus. Mauris ultrices in tellus eu condimentum. Nullam tortor metus, condimentum sed velit ut, commodo vulputate nunc.</p>
+</section>
+<article>
+	<h3>Drugi nie mniej ważny paragraf</h3>
+	<p>Suspendisse potenti. Aliquam sed nulla id odio malesuada elementum ut sit amet tellus. Aliquam pharetra eros sit amet scelerisque pellentesque. Ut sollicitudin ligula vel tortor ultricies, porttitor consequat nisi efficitur. Sed eget lectus nibh. Pellentesque dignissim augue sit amet eleifend consequat. Nunc posuere elit maximus sollicitudin bibendum. Aenean posuere sapien at elit convallis venenatis. Nullam sollicitudin eros justo. Cras vitae nibh a libero faucibus volutpat quis eu orci. Sed non finibus ligula. Aenean nec pretium augue. Pellentesque interdum sagittis lectus, nec imperdiet dui rhoncus varius.</p>
+</article>
+<article>
+	<h3>A teraz trochę o Polskiej Dumie</h3>
+	<p>Przedstawiamy Państwu Polskich Laureatów Nagrody Nobla w dziedzinie literatury.</p>
+	<table>
+		<caption>Laureaci literackiej Nagrody Nobla</caption>
+		<tbody>
+		<tr>
+			<td><img src="images/Wislawa_Szymborska.jpg" alt="Wisława Szymborska"/></td>
+			<td colspan="2">Wisława Szymborska</td>
+		</tr>
+		<tr>
+			<td colspan="2">Olga Tokarczuk</td>
+			<td><img src="images/Olga_Tokarczuk.jpg" alt="Olga Tokarczuk"/></td>
+		</tr>
+		<tr>
+			<td>Czesław Miłosz</td>
+			<td><img src="images/Czeslaw_Milosz.jpg" alt="Czesław Miłosz"></td>
+			<td></td>
+		</tr>
+		</tbody>
+	</table>
+</article>
+<article>
+	<h3>A co na świecie słychać?</h3>
+	<p>Poznajmy kilku noblistów z XXI wieku wraz z ich datą otrzymania Nobla.</p>
+	<table class="color-table">
+		<caption>Nobliści XXI wieku</caption>
+		<thead>
+		<tr>
+			<td>Lp.</td>
+			<td>Imię</td>
+			<td>Nazwisko</td>
+			<td>Dziedzina / kategoria</td>
+			<td>Rok przyznania</td>
+		</tr>
+		</thead>
+		<tbody id="laureates_tbody">
+		<tr>
+			<td>1</td>
+			<td>David</td>
+			<td>Gross</td>
+			<td>Fizyka</td>
+			<td>2004</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Awram</td>
+			<td>Herszko</td>
+			<td>Biologia</td>
+			<td>2004</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Martin</td>
+			<td>Chalfie</td>
+			<td>Biologia</td>
+			<td>2005</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Angus</td>
+			<td>Deaton</td>
+			<td>Ekonomia</td>
+			<td>2015</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>Swiatłana</td>
+			<td>Aleksijewicz</td>
+			<td>Literatura</td>
+			<td>2015</td>
+		</tr>
+		</tbody>
+	</table>
+</article>
 
-			<h3>Zarejestruj się</h3>
-
-			<form id="registration-form" class="registration-form">
-
-				<label for="login" class="required">Login</label>
-				<input id="login" type="text" name="login"/>
-				<br/>
-
-				<label for="pesel" class="required">PESEL</label>
-				<input id="pesel" type="text" name="pesel"/>
-				<br/>
-
-				<label for="password" class="required">Hasło</label>
-				<input id="password" type="password" name="password"/>
-				<br/>
-
-				<label for="repeat-password" class="required">Powtórz hasło</label>
-				<input id="repeat-password" type="password" name="repeat-password"/>
-				<br/>
-
-
-				<input id="button-reg-form" type="submit" value="Rejestruj"/>
-
-			</form>
-
-		</section>
-
-       <footer>
-			<p class="footer-inline left">&copy; 2020 Krzysztof Anderson</p>
-			<p class="footer-inline right">proudly powered by <img src="images/notepad.jpg" alt="notepad icon"/></p>
-		</footer>
-    </body>
+<footer>
+	<p class="footer-inline left">&copy; 2020 Krzysztof Anderson</p>
+	<p class="footer-inline right">proudly powered by <img src="images/notepad.jpg" alt="notepad icon"/></p>
+</footer>
+</body>
 </html>
