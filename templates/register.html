@@ -21,26 +21,33 @@
 
     <h3>Zarejestruj się</h3>
 
+    <table class="registation-table">
     <form id="registration-form" class="registration-form">
+        <tbody>
+        <tr>
+            <td><label for="login" class="required">Login</label></td>
+            <td colspan="2"><input id="login" type="text" name="login"/></td>
+        </tr>
 
-        <label for="login" class="required">Login</label>
-        <input id="login" type="text" name="login"/>
-        <br/>
+        <tr>
+            <td><label for="pesel" class="required">PESEL</label></td>
+            <td colspan="2"><input id="pesel" type="text" name="pesel"/></td>
+        </tr>
 
-        <label for="pesel" class="required">PESEL</label>
-        <input id="pesel" type="text" name="pesel"/>
-        <br/>
+        <tr>
+            <td><label for="password" class="required">Hasło</label></td>
+            <td colspan="2"><input id="password" type="password" name="password"/></td>
+            <br/>
+        </tr>
 
-        <label for="password" class="required">Hasło</label>
-        <input id="password" type="password" name="password"/>
-        <br/>
+        <tr>
+            <td><label for="repeat-password" class="required">Powtórz hasło</label></td>
+            <td colspan="2"><input id="repeat-password" type="password" name="repeat-password"/></td>
+        </tr>
 
-        <label for="repeat-password" class="required">Powtórz hasło</label>
-        <input id="repeat-password" type="password" name="repeat-password"/>
-        <br/>
-
-
-        <input id="button-reg-form" type="submit" value="Rejestruj"/>
+        <tr>
+            <td colspan="2"><input id="button-reg-form" type="submit" value="Rejestruj"/></td>
+        </tr>
 
     </form>
 

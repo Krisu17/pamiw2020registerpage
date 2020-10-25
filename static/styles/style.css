@@ -56,7 +56,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid darkgoldenrod;
+    /*border: 1px solid darkgoldenrod;*/
 }
 
 td, img {
@@ -109,7 +109,15 @@ footer {
 
 .warning-field {
     display: inline-block;
-    width: 150px;
-    color: red;
+    width: auto;
+    padding: 4px;
+    background-color: #f44336;
+    color: white;
     font-size: small;
+
+}
+
+.registation-table {
+    margin-left: 30%;
+    border: none;
 }
