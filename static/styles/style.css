@@ -79,6 +79,10 @@ td, img {
     background-color: lightgrey !important;
 }
 
+.color-table tr:hover {
+    background-color: #F0F0F0;
+}
+
 footer {
     position: fixed;
     bottom: 0;
