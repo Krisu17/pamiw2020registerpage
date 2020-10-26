@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b3927a8d-69f5-4ba5-9aee-89934dec88d6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Czeslaw_Milosz.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Olga_Tokarczuk.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Wislawa_Szymborska.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/index.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/notepad.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/scripts/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/registration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +43,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603550995958</updated>
       <workItem from="1603550997008" duration="11337000" />
-      <workItem from="1603576196242" duration="19496000" />
+      <workItem from="1603576196242" duration="22486000" />
     </task>
     <servers />
   </component>

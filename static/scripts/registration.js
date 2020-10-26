@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const PASSWORD_FIELD_ID = "password";
     const REPEAT_PASSWORD_FIELD_ID = "repeat-password";
 
-    var HTTP_STATUS = {OK: 200, NOT_FOUND: 404};
+    var HTTP_STATUS = {OK: 200, CREATED: 201, NOT_FOUND: 404};
 
     prepareEventOnLoginChange();
     prepareEventOnPeselChange();
@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         for (var i = 0; i < n; i++) {
             console.log(event.srcElement[i].value);
         }
+        submitRegisterForm();
     });
 
     function prepareEventOnLoginChange() {
@@ -132,6 +133,44 @@ document.addEventListener('DOMContentLoaded', function (event) {
         }).catch(function (err) {
             return err.status;
         }));
+    }
+
+    function submitRegisterForm() {
+        let registerUrl = URL + "register";
+
+        let registerParams = {
+            method: POST,
+            body: new FormData(registrationForm),
+            redirect: "follow"
+        };
+
+        fetch(registerUrl, registerParams)
+            .then(response => getRegisterResponseData(response))
+            .then(response => displayInConsoleCorrectResponse(response))
+            .catch(err => {
+                console.log("Caught error: " + err);
+            });
+    }
+
+    function getRegisterResponseData(response) {
+        let status = response.status;
+
+        if (status === HTTP_STATUS.OK || status === HTTP_STATUS.CREATED) {
+            return response.json();
+        } else {
+            console.error("Response status code: " + response.status);
+            throw "Unexpected response status: " + response.status;
+        }
+    }
+
+    function displayInConsoleCorrectResponse(correctResponse) {
+        let status = correctResponse.registration_status;
+
+        console.log("Status: " + status);
+
+        if (status !== "OK") {
+            console.log("Errors: " + correctResponse.errors);
+        }
     }
 
     function updatePeselValidityMessage() {
