@@ -173,10 +173,11 @@ footer {
     box-shadow: 1px 1px black;
 }
 
-.registation-table {
+.form-row {
     margin-left: 30%;
     border: none;
     text-align: left;
+    padding: 20px;
 }
 
 h2 {

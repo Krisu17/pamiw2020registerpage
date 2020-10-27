@@ -23,33 +23,30 @@
 
     <h2>Zarejestruj się</h2>
 
-    <table class="registation-table">
     <form id="registration-form" class="registration-form">
-        <tbody>
-        <tr>
-            <td><label for="login" class="required">Login</label></td>
-            <td colspan="2"><input id="login" type="text" name="login" class="input-field"/></td>
-        </tr>
+        <div class="form-row">
+            <label for="login" class="required">Login</label>
+            <input id="login" type="text" name="login" class="input-field" placeholder="Pawel"/>
+        </div>
 
-        <tr>
-            <td><label for="pesel" class="required">PESEL</label></td>
-            <td colspan="2"><input id="pesel" type="text" name="pesel" class="input-field"/></td>
-        </tr>
+        <div class="form-row">
+            <label for="pesel" class="required">PESEL</label>
+            <input id="pesel" type="text" name="pesel" class="input-field" placeholder="97101492672"/>
+        </div>
 
-        <tr>
-            <td><label for="password" class="required">Hasło</label></td>
-            <td colspan="2"><input id="password" type="password" name="password" class="input-field"/></td>
-            <br/>
-        </tr>
+        <div class="form-row">
+            <label for="password" class="required">Hasło</label>
+            <input id="password" type="password" name="password" class="input-field" placeholder="Hasło"/>
+        </div>
 
-        <tr>
-            <td><label for="second_password" class="required">Powtórz hasło</label></td>
-            <td colspan="2"><input id="second_password" type="password" name="second_password" class="input-field"/></td>
-        </tr>
+        <div class="form-row">
+            <label for="second_password" class="required">Powtórz hasło</label>
+            <input id="second_password" type="password" name="second_password" class="input-field" placeholder="Powrórz hasło"/>
+        </div>
 
-        <tr>
-            <td colspan="2"><input id="button-reg-form" type="submit" value="Rejestruj" /></td>
-        </tr>
+        <div class="form-row">
+            <input id="button-reg-form" type="submit" value="Rejestruj"/>
+        </div>
 
     </form>
 
