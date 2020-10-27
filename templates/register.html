@@ -4,13 +4,15 @@
     <title>Fromularz rejestracji - PED</title>
     <meta charset="utf-8">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
     <script src="scripts/registration.js"></script>
 </head>
-<body>
-<header>
-    <h2>Paczuch Express Delivery</h2>
-</header>
+<body class="registration_body">
 <nav>
+    <div class="logo">
+        <img class="logo_image" src="images/logo.png" alt="logo">
+        <h4 class="logo_title">Paczuch Express Delivery</h4>
+    </div>
     <ul>
         <li><a href="/">Strona główna</a></li>
         <li><a href="/register">Zarejestuj się</a></li>
@@ -19,34 +21,34 @@
 </nav>
 <section>
 
-    <h3>Zarejestruj się</h3>
+    <h2>Zarejestruj się</h2>
 
     <table class="registation-table">
     <form id="registration-form" class="registration-form">
         <tbody>
         <tr>
             <td><label for="login" class="required">Login</label></td>
-            <td colspan="2"><input id="login" type="text" name="login"/></td>
+            <td colspan="2"><input id="login" type="text" name="login" class="input-field"/></td>
         </tr>
 
         <tr>
             <td><label for="pesel" class="required">PESEL</label></td>
-            <td colspan="2"><input id="pesel" type="text" name="pesel"/></td>
+            <td colspan="2"><input id="pesel" type="text" name="pesel" class="input-field"/></td>
         </tr>
 
         <tr>
             <td><label for="password" class="required">Hasło</label></td>
-            <td colspan="2"><input id="password" type="password" name="password"/></td>
+            <td colspan="2"><input id="password" type="password" name="password" class="input-field"/></td>
             <br/>
         </tr>
 
         <tr>
-            <td><label for="repeat-password" class="required">Powtórz hasło</label></td>
-            <td colspan="2"><input id="repeat-password" type="password" name="repeat-password"/></td>
+            <td><label for="second_password" class="required">Powtórz hasło</label></td>
+            <td colspan="2"><input id="second_password" type="password" name="second_password" class="input-field"/></td>
         </tr>
 
         <tr>
-            <td colspan="2"><input id="button-reg-form" type="submit" value="Rejestruj"/></td>
+            <td colspan="2"><input id="button-reg-form" type="submit" value="Rejestruj" /></td>
         </tr>
 
     </form>

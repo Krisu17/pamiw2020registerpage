@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const LOGIN_FIELD_ID = "login";
     const PESEL_FIELD_ID = "pesel";
     const PASSWORD_FIELD_ID = "password";
-    const REPEAT_PASSWORD_FIELD_ID = "repeat-password";
+    const REPEAT_PASSWORD_FIELD_ID = "second_password";
+    const SUBMIT_BUTTON_ID = "button-reg-form"
 
     var HTTP_STATUS = {OK: 200, CREATED: 201, NOT_FOUND: 404};
 
@@ -21,15 +22,28 @@ document.addEventListener('DOMContentLoaded', function (event) {
     registrationForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
-
-        console.log("Form submission stopped."); // to remove
-
-        var n = event.srcElement.length;
-        for (var i = 0; i < n; i++) {
-            console.log(event.srcElement[i].value);
+        if(isFormOK()) {
+            submitRegisterForm();
         }
-        submitRegisterForm();
     });
+
+    function isFormOK() {
+        let availabilityWarningElemId = document.getElementById("availableLoginWarning");
+        let validityWarningElemId = document.getElementById("validLoginWarning");
+        let peselWaringElemId = document.getElementById("peselWaring");
+        let passwordWarningElemId = document.getElementById("passwordWarning");
+        let repeatPasswordWarningElemId = document.getElementById("repeatPasswordWarning");
+
+        if(availabilityWarningElemId === null &&
+            validityWarningElemId === null &&
+            peselWaringElemId === null &&
+            passwordWarningElemId === null &&
+            repeatPasswordWarningElemId === null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     function prepareEventOnLoginChange() {
         let loginInput = document.getElementById(LOGIN_FIELD_ID);
@@ -59,10 +73,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
         isLoginAvailable().then(function (isAvailable) {
             if (isAvailable) {
-                console.log("Available login!"); // to remove
                 removeWarningMessage(availabilityWarningElemId);
             } else {
-                console.log("NOT available login"); // to remove
                 showWarningMessage(availabilityWarningElemId, loginTakenWarningMessage, LOGIN_FIELD_ID);
             }
         }).catch(function (error) {
@@ -70,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             console.error(error);
         });
 
-        if(isLoginValid() === true) {
+        if (isLoginValid() === true) {
             removeWarningMessage(validityWarningElemId);
         } else {
             showWarningMessage(validityWarningElemId, wrongLoginFormatWarningMessage, LOGIN_FIELD_ID)
@@ -79,6 +91,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     function showWarningMessage(newElemId, message, textBoxId) {
         let warningElem = prepareWarningElem(newElemId, message);
+        appendAfterElem(textBoxId, warningElem);
+    }
+
+    function showSuccesMessage(newElemId, message, textBoxId) {
+        let warningElem = prepareWarningElem(newElemId, message);
+        warningElem.className = "success-field";
         appendAfterElem(textBoxId, warningElem);
     }
 
@@ -165,76 +183,72 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     function displayInConsoleCorrectResponse(correctResponse) {
         let status = correctResponse.registration_status;
-
-        console.log("Status: " + status);
+        let correctRegisterInfo = "correctRegister";
+        let sucessMessage = "Użytkownik został zarejestrowany pomyślnie.";
+        let warningRegisterInfo = "correctRegister";
+        let warningMessage = "Podczas rejstracji wystąpił błąd.";
 
         if (status !== "OK") {
+            removeWarningMessage(correctRegisterInfo);
+            showWarningMessage(warningRegisterInfo, warningMessage, SUBMIT_BUTTON_ID);
             console.log("Errors: " + correctResponse.errors);
+        } else {
+            removeWarningMessage(warningRegisterInfo);
+            showSuccesMessage(correctRegisterInfo, sucessMessage, SUBMIT_BUTTON_ID);
         }
     }
+
 
     function updatePeselValidityMessage() {
         let peselWaringElemId = "peselWaring";
         let waringMessage = "Proszę wprowadzić poprawny numer PESEL.";
 
-        if(isPeselValid()) {
-            console.log("PESEL valid!"); // to remove
+        if (isPeselValid()) {
             removeWarningMessage(peselWaringElemId);
         } else {
-            console.log("PESEL INvalid! :("); // to remove
             showWarningMessage(peselWaringElemId, waringMessage, PESEL_FIELD_ID);
         }
     }
 
     function isPeselValid() {
         let peselInput = document.getElementById(PESEL_FIELD_ID);
-        if(peselInput.value.length !== 11) {
+        if (peselInput.value.length !== 11) {
             return false;
         }
-        let year = peselInput.value[0]*10 + peselInput.value[1]*1;
-        let month = peselInput.value[2]*10 + peselInput.value[3]*1 - 1;
+        let year = peselInput.value[0] * 10 + peselInput.value[1] * 1;
+        let month = peselInput.value[2] * 10 + peselInput.value[3] * 1 - 1;
         while (month > 11) {
             month -= 20;
-            console.log("Month" + month); // to remove
-            if (month < 0){
+            if (month < 0) {
                 return false;
                 break;
             }
             year += 100;
-            console.log("Year" + year); // to remove
         }
         year += 1900;
-        console.log("Year" + year);// to remove
         if (year > 2299) {
             year -= 500;
         }
-        let day = peselInput.value[4]*10 + peselInput.value[5]*1;
-        console.log("Day " + day); // to remove
-        let birthday = new Date(year,month,day);
-        console.log("Data  " + birthday); // to remove
-        console.log("Data dzień  " + birthday.getDate()); // to remove
-        console.log("Data miesiąc " + birthday.getMonth()); // to remove
-        console.log("Data rok " + birthday.getFullYear()); // to remove
-        if(birthday.getDate() === day
+        let day = peselInput.value[4] * 10 + peselInput.value[5] * 1;
+        let birthday = new Date(year, month, day);
+        if (birthday.getDate() === day
             && birthday.getMonth() === month
             && birthday.getFullYear() === year) {
             let controlSum =
-                (peselInput.value[0] * 1)%10 +
-                (peselInput.value[1] * 3)%10 +
-                (peselInput.value[2] * 7)%10 +
-                (peselInput.value[3] * 9)%10 +
-                (peselInput.value[4] * 1)%10 +
-                (peselInput.value[5] * 3)%10 +
-                (peselInput.value[6] * 7)%10 +
-                (peselInput.value[7] * 9)%10 +
-                (peselInput.value[8] * 1)%10 +
-                (peselInput.value[9] * 3)%10;
-            console.log("ControlSum  " + controlSum); // to remove
-            while(controlSum > 10) {
+                (peselInput.value[0] * 1) % 10 +
+                (peselInput.value[1] * 3) % 10 +
+                (peselInput.value[2] * 7) % 10 +
+                (peselInput.value[3] * 9) % 10 +
+                (peselInput.value[4] * 1) % 10 +
+                (peselInput.value[5] * 3) % 10 +
+                (peselInput.value[6] * 7) % 10 +
+                (peselInput.value[7] * 9) % 10 +
+                (peselInput.value[8] * 1) % 10 +
+                (peselInput.value[9] * 3) % 10;
+            while (controlSum > 10) {
                 controlSum %= 10;
             }
             controlSum = 10 - controlSum;
-            console.log("ControlSum  " + controlSum); // to remove
             if (controlSum == peselInput.value[10]) {
                 return true;
             } else {
@@ -249,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         let warningElemId = "passwordWarning";
         let warningMessage = "Co najmniej 8 znaków, mała i duża litera oraz znak specjalny.";
 
-        if(isPasswordValid() === true) {
+        if (isPasswordValid() === true) {
             removeWarningMessage(warningElemId);
         } else {
             showWarningMessage(warningElemId, warningMessage, PASSWORD_FIELD_ID);
@@ -259,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     function isPasswordValid() {
         let regExpression = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*]).{8,}$/;
         let password = document.getElementById(PASSWORD_FIELD_ID);
-        if(password.value.match(regExpression)) {
+        if (password.value.match(regExpression)) {
             return true;
         } else {
             return false;
@@ -270,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         let warningElemId = "repeatPasswordWarning";
         let warningMessage = "Hasła nie są identyczne!";
 
-        if(arePasswordsTheSame() === true) {
+        if (arePasswordsTheSame() === true) {
             removeWarningMessage(warningElemId);
         } else {
             showWarningMessage(warningElemId, warningMessage, REPEAT_PASSWORD_FIELD_ID);
@@ -281,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         let password = document.getElementById(PASSWORD_FIELD_ID);
         let repeatPassword = document.getElementById(REPEAT_PASSWORD_FIELD_ID);
 
-        if(password.value === repeatPassword.value) {
+        if (password.value === repeatPassword.value) {
             return true;
         } else {
             return false;
@@ -291,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     function isLoginValid() {
         let regExpression = /^[A-Za-z]+$/;
         let login = document.getElementById(LOGIN_FIELD_ID);
-        if(login.value.match(regExpression) && login.value.length > 4) {
+        if (login.value.match(regExpression) && login.value.length > 4) {
             return true;
         } else {
             return false;
